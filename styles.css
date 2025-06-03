@@ -509,11 +509,15 @@ nav a {
   background-color: #2E8B57;
   color: white;
   border: none;
-  padding: 1rem 3rem;
+  padding: 0.8rem 2rem;
   border-radius: 25px;
   font-size: 1.1rem;
   cursor: pointer;
   transition: transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .menu-btn:hover {
@@ -875,5 +879,161 @@ nav a {
     align-items: center;
     justify-content: center;
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .about-container,
+  .find-us {
+    padding: 0 1.5rem;
+  }
+
+  .location-info p {
+    font-size: 0.95rem;
+  }
+
+  .about-text {
+    padding: 1.5rem;
+  }
+
+  .about-text h2,
+  .location-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .offerings {
+    position: relative;
+    padding-bottom: 4rem;
+  }
+
+  .order-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .hero .order-btn {
+    display: none;
+  }
+
+  .mobile-order {
+    display: inline-flex;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .hero .order-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container,
+  .find-us {
+    padding: 0 1rem;
+  }
+
+  .about-text {
+    padding: 1rem;
+  }
+
+  .about-text p,
+  .location-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .about-text h2,
+  .location-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Hide mobile order button by default (desktop) */
+.mobile-order {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-order {
+    display: inline-flex;  /* Show on mobile */
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .hero .order-btn {
+    display: none;  /* Hide hero section button on mobile */
+  }
+
+  .menu-btn {
+    display: none;  /* Hide menu button on mobile */
+  }
+}
+
+/* Hide mobile what we offer divider by default */
+.mobile-what-we-offer {
+  display: none;
+}
+
+/* Desktop only heading */
+.desktop-only-heading {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-what-we-offer {
+    display: flex;
+    margin: 0;
+    position: sticky;
+    top: 40px;
+    z-index: 100;
+  }
+
+  .desktop-only-heading {
+    display: none;
+    margin: 0;
+    padding: 0;
+    height: 0;
+  }
+
+  .offerings {
+    padding-top: 0;
+  }
+
+  .offerings-grid {
+    margin-top: 0;
+  }
+
+  /* Ensure no extra space from section dividers */
+  .section-divider {
+    margin: 0;
+  }
+
+  /* Adjust spacing between sections */
+  .about,
+  .contact {
+    margin-top: 0;
   }
 } 
