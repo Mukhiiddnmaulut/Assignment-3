@@ -390,7 +390,7 @@ nav a {
   background-image: url('assets/wave-pattern.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   min-height: 400px;
   width: 100%;
   box-sizing: border-box;
@@ -479,6 +479,51 @@ nav a {
   
   .divider-content-mobile span {
     padding: 0 15px;
+  }
+
+  .offerings {
+    padding-top: 2rem;
+  }
+
+  .offerings-grid {
+    display: flex;
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+    margin: 1rem 0.5rem;
+    padding: 0;
+    gap: 0.3rem;
+    width: calc(100% - 1rem);
+  }
+
+  .offering-item {
+    flex: 1 1 25% !important;
+    min-width: 0 !important;
+    max-width: 25% !important;
+    padding: 0 0.2rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100px !important;
+    padding-top: 20px !important;
+  }
+
+  .offering-item img {
+    width: 35px !important;
+    height: 35px !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+  }
+
+  .offering-item p {
+    font-size: 0.75rem !important;
+    margin: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
   }
 }
 
@@ -1006,8 +1051,7 @@ nav a {
   .mobile-what-we-offer {
     display: flex;
     margin: 0;
-    position: sticky;
-    top: 40px;
+    position: relative;
     z-index: 100;
   }
 
@@ -1019,7 +1063,7 @@ nav a {
   }
 
   .offerings {
-    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .offerings-grid {
