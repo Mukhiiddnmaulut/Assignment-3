@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noodles & More - Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #FAF7F2;
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        }
+
+        .menu-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .menu-image {
+            max-width: 100%;
+            max-height: calc(100% - 60px);
+            object-fit: contain;
+            display: block;
+        }
+
+        .home-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #2E8B57;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .home-link svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+            fill: #2E8B57;
+        }
+
+        .home-link span {
+            font-size: 0.9rem;
+        }
+
+        /* Surface Pro 7 */
+        @media screen and (width: 912px) and (height: 1368px) {
+            .menu-container {
+                padding: 40px;
+            }
+            .menu-image {
+                width: 832px;
+                height: 1288px;
+            }
+        }
+
+        /* iPhone 12 Pro */
+        @media screen and (width: 390px) and (height: 844px) {
+            .menu-container {
+                padding: 10px 0;
+            }
+            .menu-image {
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+            }
+            .home-link {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <img src="assets/Menu.png" alt="Noodles & More Menu" class="menu-image">
+        <a href="index.html" class="home-link">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+            </svg>
+            <span>Return Home</span>
+        </a>
+    </div>
+</body>
+</html> 
