@@ -78,7 +78,7 @@ body {
   .hero-image {
     flex: 1;
     text-align: left;
-    padding-right: 1rem;
+    padding-right: 0;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
@@ -293,8 +293,11 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  font-weight: bold;
+  font-weight: 700;
   transition: transform 0.2s;
+  border: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .order-btn:hover {
@@ -433,6 +436,7 @@ nav a {
   height: 50px;
   display: flex;
   align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .divider-content,
@@ -551,9 +555,9 @@ nav a {
 }
 
 .menu-btn {
-  background-color: #2E8B57;
-  color: white;
-  border: none;
+  background-color: #fff;
+  color: #2E8B57;
+  border: 3px solid #2E8B57;
   padding: 0.8rem 2rem;
   border-radius: 25px;
   font-size: 1.1rem;
@@ -562,7 +566,7 @@ nav a {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .menu-btn:hover {
@@ -666,15 +670,22 @@ nav a {
 }
 
 .get-directions-btn {
-  background-color: #2E8B57;
-  color: white;
+  background-color: #fff;
+  color: #2E8B57;
   padding: 0.8rem 2rem;
   border-radius: 25px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  font-weight: 700;
   margin-top: 2rem;
   transition: transform 0.2s;
+  border: 3px solid #2E8B57;
+  font-size: 1.1rem;
+}
+
+.get-directions-btn svg {
+  stroke: #2E8B57;
 }
 
 .get-directions-btn:hover {
@@ -744,7 +755,6 @@ nav a {
   .hero-image {
     padding-right: 0;
     text-align: center;
-    margin-bottom: 2rem;
   }
   .about-images {
     grid-template-columns: repeat(2, 1fr);
@@ -982,10 +992,41 @@ nav a {
     transform: translateX(-50%);
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
+    background-color: #fff;
+    color: #2E8B57;
+    border: 3px solid #2E8B57;
+    font-weight: 700;
+    transform-origin: center;
+  }
+
+  .mobile-order:hover,
+  .mobile-order:active,
+  .mobile-order:focus {
+    transform: translateX(-50%) scale(1.05);
   }
 
   .hero .order-btn {
     display: none;
+  }
+
+  .footer {
+    padding: 2rem 0;
+  }
+
+  .footer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .footer p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 1.5rem;
+  }
+
+  .contact-box {
+    margin: 2rem 1.5rem 0;
   }
 }
 
@@ -1009,6 +1050,22 @@ nav a {
   .location-info h2 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
+  }
+
+  .footer h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+  }
+
+  .contact-box {
+    margin: 2rem 1rem 0;
   }
 }
 
@@ -1080,4 +1137,9 @@ nav a {
   .contact {
     margin-top: 0;
   }
+}
+
+/* Override shadow for mobile order button */
+.mobile-order {
+  box-shadow: none;
 } 
