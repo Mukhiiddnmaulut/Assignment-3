@@ -54,6 +54,9 @@ body {
     align-items: center;
     z-index: 1000;
     transition: 0.3s;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
   }
   nav.open {
     display: flex;
@@ -63,6 +66,7 @@ body {
     gap: 2rem;
     padding: 0;
     align-items: center;
+    margin-top: 40px;
   }
   nav ul li a {
     font-size: 1.5rem;
@@ -223,19 +227,39 @@ body {
     width: 100vw;
     height: 40px;
     background: #333;
-    z-index: 1000;
+    z-index: 900;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
+
   .hamburger {
+    display: flex;
+    position: fixed;
     top: 0.5rem;
     right: 1rem;
     z-index: 1001;
     width: 28px;
     height: 28px;
+    background: none;
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
   }
+
   .hamburger span {
     width: 20px;
     height: 3px;
-    margin: 3px 0;
+    margin: 2px 0;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  .mobile-logo-btn {
+    z-index: 901;
   }
 }
 
@@ -308,6 +332,16 @@ body {
 nav {
   background-color: #333;
   padding: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Desktop-only sticky nav */
+@media (min-width: 901px) {
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 }
 
 .nav-inner {
@@ -579,7 +613,7 @@ nav a {
   color: white;
   padding: 4rem 0;
   display: flex;
-  background-image: url('assets/pattern-bg.png');
+  background-image: url('assets/background2.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -596,6 +630,7 @@ nav a {
 .about-text {
   flex: 1;
   padding: 2rem;
+  max-width: 50%;
 }
 
 .about-text h2 {
@@ -612,10 +647,7 @@ nav a {
 
 .about-images {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  align-content: center;
+  visibility: hidden;
 }
 
 .about-images img {
@@ -757,7 +789,7 @@ nav a {
     text-align: center;
   }
   .about-images {
-    grid-template-columns: repeat(2, 1fr);
+    display: none;
   }
   .offerings-grid {
     flex-wrap: wrap;
@@ -905,7 +937,7 @@ nav a {
   .hamburger span {
     width: 20px;
     height: 3px;
-    margin: 3px 0;
+    margin: 2px 0;
   }
 }
 
