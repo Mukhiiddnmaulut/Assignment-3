@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-bar input');
     const searchResults = document.querySelector('.search-results');
     const menuItems = document.querySelectorAll('.menu-item');
+    const orderContent = document.querySelector('.order-content');
+
+    // Add minimize button to cart header
+    const orderHeader = document.querySelector('.order-header');
+    const minimizeButton = document.createElement('button');
+    minimizeButton.className = 'minimize-cart';
+    minimizeButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
+    minimizeButton.setAttribute('aria-label', 'Minimize cart');
+    orderHeader.appendChild(minimizeButton);
 
     // Search functionality
     searchInput.addEventListener('input', function(e) {
@@ -72,18 +81,77 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Function to handle cart visibility
+    function toggleCart(show) {
+        if (show) {
+            orderSummary.classList.add('active');
+            if (window.innerWidth <= 600) {
+                document.body.style.overflow = 'hidden';
+            }
+        } else {
+            orderSummary.classList.remove('active');
+            if (window.innerWidth <= 600) {
+                document.body.style.overflow = '';
+            }
+        }
+    }
+
     // Toggle cart panel
     cartToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        orderSummary.classList.toggle('active');
+        toggleCart(!orderSummary.classList.contains('active'));
+    });
+
+    // Minimize cart
+    minimizeButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCart(false);
     });
 
     // Close cart panel when clicking outside
     document.addEventListener('click', function(e) {
         if (!orderSummary.contains(e.target) && !cartToggle.contains(e.target)) {
-            orderSummary.classList.remove('active');
+            toggleCart(false);
         }
     });
+
+    // Handle touch events for mobile cart
+    if (orderContent) {
+        let startY;
+        let currentY;
+        
+        orderContent.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+
+        orderContent.addEventListener('touchmove', function(e) {
+            if (!startY) return;
+            
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+            
+            // Only allow dragging down
+            if (diff > 0) {
+                e.preventDefault();
+                orderContent.style.transform = `translateY(${diff}px)`;
+            }
+        }, { passive: false });
+
+        orderContent.addEventListener('touchend', function() {
+            if (!startY || !currentY) return;
+            
+            const diff = currentY - startY;
+            orderContent.style.transform = '';
+            
+            // If dragged down more than 100px, close the cart
+            if (diff > 100) {
+                toggleCart(false);
+            }
+            
+            startY = null;
+            currentY = null;
+        }, { passive: true });
+    }
 
     // Add to cart functionality
     document.querySelectorAll('.add-to-cart').forEach(button => {
@@ -99,13 +167,20 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCartDisplay();
             
             // Show feedback
-            this.textContent = 'Added!';
+            this.classList.add('added');
+            if (window.innerWidth > 600) {
+                this.querySelector('.sr-only').textContent = 'Added to Cart';
+            }
+            
             setTimeout(() => {
-                this.textContent = 'Add to Cart';
+                this.classList.remove('added');
+                if (window.innerWidth > 600) {
+                    this.querySelector('.sr-only').textContent = 'Add to Cart';
+                }
             }, 1000);
 
             // Show cart panel
-            orderSummary.classList.add('active');
+            toggleCart(true);
         });
     });
 
@@ -116,6 +191,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const index = parseInt(e.target.dataset.index);
             cart.splice(index, 1);
             updateCartDisplay();
+            
+            // If cart is empty, close it on mobile
+            if (cart.length === 0 && window.innerWidth <= 600) {
+                toggleCart(false);
+            }
         }
     });
 
@@ -134,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>${item.name}</span>
                 <div class="item-actions">
                     <span>$${item.price.toFixed(2)}</span>
-                    <button class="remove-item" data-index="${index}">×</button>
+                    <button class="remove-item" data-index="${index}" aria-label="Remove item">×</button>
                 </div>
             `;
             orderItems.appendChild(li);
@@ -153,5 +233,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedCart) {
         cart = JSON.parse(savedCart);
         updateCartDisplay();
+    }
+
+    // Hamburger menu functionality for mobile nav
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileNav.classList.toggle('open');
+        });
+        // Close menu when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileNav.classList.remove('open'));
+        });
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+                mobileNav.classList.remove('open');
+            }
+        });
     }
 }); 
