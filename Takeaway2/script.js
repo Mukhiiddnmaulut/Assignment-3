@@ -28,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="product-description"></p>
                 <div class="product-meta"></div>
                 <div class="product-price"></div>
+                <div class="quantity-selector">
+                    <span class="quantity-label">Quantity:</span>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn decrease" aria-label="Decrease quantity">-</button>
+                        <span class="quantity-value">1</span>
+                        <button class="quantity-btn increase" aria-label="Increase quantity">+</button>
+                    </div>
+                </div>
                 <button class="add-to-cart-product">Add to Cart</button>
             </div>
         </div>
@@ -42,6 +50,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const productPrice = productView.querySelector('.product-price');
     const addToCartProduct = productView.querySelector('.add-to-cart-product');
     const closeProduct = productView.querySelector('.close-product');
+    const quantityValue = productView.querySelector('.quantity-value');
+    const decreaseBtn = productView.querySelector('.decrease');
+    const increaseBtn = productView.querySelector('.increase');
+
+    // Quantity controls
+    let currentQuantity = 1;
+    const maxQuantity = 99;
+
+    function updateQuantity(value) {
+        currentQuantity = Math.max(1, Math.min(maxQuantity, value));
+        quantityValue.textContent = currentQuantity;
+        decreaseBtn.disabled = currentQuantity <= 1;
+        increaseBtn.disabled = currentQuantity >= maxQuantity;
+    }
+
+    decreaseBtn.addEventListener('click', () => updateQuantity(currentQuantity - 1));
+    increaseBtn.addEventListener('click', () => updateQuantity(currentQuantity + 1));
 
     // Add minimize button to cart header
     const orderHeader = document.querySelector('.order-header');
@@ -194,6 +219,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const spicyLabel = item.querySelector('.spicy-label');
         const addToCartBtn = item.querySelector('.add-to-cart');
 
+        // Reset quantity
+        updateQuantity(1);
+
         // Set product details
         productImage.src = img.src;
         productImage.alt = img.alt;
@@ -212,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productMeta.appendChild(spicyTag);
         }
 
-        // Add vegetarian/meat tag based on section
+        // Add vegetarian/meat tag based on section and item name
         const section = item.closest('.menu-section');
         if (section) {
             const sectionId = section.id;
@@ -221,11 +249,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 vegTag.className = 'product-tag vegetarian';
                 vegTag.textContent = 'Vegetarian';
                 productMeta.appendChild(vegTag);
-            } else if (sectionId === 'battered-chicken-pork') {
-                const meatTag = document.createElement('span');
-                meatTag.className = 'product-tag meat';
-                meatTag.textContent = 'Contains Meat';
-                productMeta.appendChild(meatTag);
+            } else {
+                // Check for meat types in the title and description
+                const meatTypes = [];
+                
+                // Check title for meat types
+                if (title.toLowerCase().includes('chicken')) {
+                    meatTypes.push('Chicken');
+                }
+                if (title.toLowerCase().includes('beef')) {
+                    meatTypes.push('Beef');
+                }
+                if (title.toLowerCase().includes('pork')) {
+                    meatTypes.push('Pork');
+                }
+                if (title.toLowerCase().includes('seafood') || 
+                    title.toLowerCase().includes('prawn') || 
+                    title.toLowerCase().includes('fish')) {
+                    meatTypes.push('Seafood');
+                }
+
+                // Check description for additional meat types
+                if (description.toLowerCase().includes('beef') && !meatTypes.includes('Beef')) {
+                    meatTypes.push('Beef');
+                }
+                if (description.toLowerCase().includes('pork') && !meatTypes.includes('Pork')) {
+                    meatTypes.push('Pork');
+                }
+                if (description.toLowerCase().includes('chicken') && !meatTypes.includes('Chicken')) {
+                    meatTypes.push('Chicken');
+                }
+                if ((description.toLowerCase().includes('seafood') || 
+                     description.toLowerCase().includes('prawn') || 
+                     description.toLowerCase().includes('fish')) && 
+                    !meatTypes.includes('Seafood')) {
+                    meatTypes.push('Seafood');
+                }
+
+                // Add meat tags
+                meatTypes.forEach(meatType => {
+                    const meatTag = document.createElement('span');
+                    meatTag.className = 'product-tag meat';
+                    meatTag.textContent = meatType;
+                    productMeta.appendChild(meatTag);
+                });
             }
         }
 
@@ -234,7 +301,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = addToCartBtn.dataset.name;
             const price = parseFloat(addToCartBtn.dataset.price);
             
-            cart.push({ name, price });
+            // Add multiple items based on quantity
+            for (let i = 0; i < currentQuantity; i++) {
+                cart.push({ name, price });
+            }
+            
             updateCartDisplay();
             
             // Show feedback
