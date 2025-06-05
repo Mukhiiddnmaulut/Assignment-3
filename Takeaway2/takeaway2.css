@@ -639,23 +639,12 @@ h2 {
   }
 }
 
-/* Remove modal styles */
-.modal,
-.modal-content,
-.modal-image,
-.modal-price,
-.modal-actions,
-.add-to-basket,
-.cancel {
-  display: none;
-}
-
 /* All the specific class styles from the provided CSS */
 .takeaway .div {
   background-color: #ffffff;
   width: 1440px;
   height: 4253px;
-    position: relative;
+  position: relative;
 }
 
 .takeaway .overlap {

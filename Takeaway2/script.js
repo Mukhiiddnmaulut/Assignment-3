@@ -11,6 +11,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuItems = document.querySelectorAll('.menu-item');
     const orderContent = document.querySelector('.order-content');
 
+    // Create product view container
+    const productView = document.createElement('div');
+    productView.className = 'product-view';
+    productView.innerHTML = `
+        <div class="product-container">
+            <div class="product-header">
+                <div class="logo">
+                    <img src="../assets/logo.png" alt="Noodles &amp; More logo" />
+                </div>
+                <button class="close-product" aria-label="Close product view">×</button>
+            </div>
+            <div class="product-content">
+                <img class="product-image" src="" alt="">
+                <h3 class="product-title"></h3>
+                <p class="product-description"></p>
+                <div class="product-meta"></div>
+                <div class="product-price"></div>
+                <button class="add-to-cart-product">Add to Cart</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(productView);
+
+    // Product view elements
+    const productImage = productView.querySelector('.product-image');
+    const productTitle = productView.querySelector('.product-title');
+    const productDescription = productView.querySelector('.product-description');
+    const productMeta = productView.querySelector('.product-meta');
+    const productPrice = productView.querySelector('.product-price');
+    const addToCartProduct = productView.querySelector('.add-to-cart-product');
+    const closeProduct = productView.querySelector('.close-product');
+
     // Add minimize button to cart header
     const orderHeader = document.querySelector('.order-header');
     const minimizeButton = document.createElement('button');
@@ -152,6 +184,99 @@ document.addEventListener('DOMContentLoaded', function() {
             currentY = null;
         }, { passive: true });
     }
+
+    // Function to show product view
+    function showProductView(item) {
+        const img = item.querySelector('img');
+        const title = item.querySelector('h3').textContent;
+        const description = item.querySelector('p').textContent;
+        const price = item.querySelector('.price').textContent;
+        const spicyLabel = item.querySelector('.spicy-label');
+        const addToCartBtn = item.querySelector('.add-to-cart');
+
+        // Set product details
+        productImage.src = img.src;
+        productImage.alt = img.alt;
+        productTitle.textContent = title;
+        productDescription.textContent = description;
+        productPrice.textContent = price;
+
+        // Clear previous meta tags
+        productMeta.innerHTML = '';
+
+        // Add meta tags
+        if (spicyLabel) {
+            const spicyTag = document.createElement('span');
+            spicyTag.className = 'product-tag spicy';
+            spicyTag.textContent = 'Spicy';
+            productMeta.appendChild(spicyTag);
+        }
+
+        // Add vegetarian/meat tag based on section
+        const section = item.closest('.menu-section');
+        if (section) {
+            const sectionId = section.id;
+            if (sectionId === 'vegetable-meals') {
+                const vegTag = document.createElement('span');
+                vegTag.className = 'product-tag vegetarian';
+                vegTag.textContent = 'Vegetarian';
+                productMeta.appendChild(vegTag);
+            } else if (sectionId === 'battered-chicken-pork') {
+                const meatTag = document.createElement('span');
+                meatTag.className = 'product-tag meat';
+                meatTag.textContent = 'Contains Meat';
+                productMeta.appendChild(meatTag);
+            }
+        }
+
+        // Set up add to cart button
+        addToCartProduct.onclick = () => {
+            const name = addToCartBtn.dataset.name;
+            const price = parseFloat(addToCartBtn.dataset.price);
+            
+            cart.push({ name, price });
+            updateCartDisplay();
+            
+            // Show feedback
+            addToCartProduct.textContent = 'Added to Cart!';
+            addToCartProduct.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                addToCartProduct.textContent = 'Add to Cart';
+                addToCartProduct.style.backgroundColor = '';
+            }, 1000);
+
+            // Show cart panel
+            toggleCart(true);
+        };
+
+        // Show product view
+        productView.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close product view
+    function closeProductView() {
+        productView.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Event listeners for product view
+    closeProduct.addEventListener('click', closeProductView);
+    productView.addEventListener('click', (e) => {
+        if (e.target === productView) {
+            closeProductView();
+        }
+    });
+
+    // Add click handlers to menu items
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Don't show product view if clicking add to cart button
+            if (e.target.closest('.add-to-cart')) return;
+            showProductView(item);
+        });
+    });
 
     // Add to cart functionality
     document.querySelectorAll('.add-to-cart').forEach(button => {

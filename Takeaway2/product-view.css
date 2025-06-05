@@ -1,0 +1,183 @@
+.product-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.product-view.active {
+  display: flex;
+}
+
+.product-container {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  padding: var(--spacing-sm) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.product-header .logo img {
+  height: 46px;
+  width: auto;
+}
+
+.close-product {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.close-product:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.product-content {
+  padding: 1rem;
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.product-description {
+  color: var(--text-color-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.product-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.product-tag.spicy {
+  background-color: #ff4444;
+  color: white;
+}
+
+.product-tag.vegetarian {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.product-tag.meat {
+  background-color: #FF9800;
+  color: white;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.add-to-cart-product {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-cart-product:hover {
+  background-color: #232323;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .product-container {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+
+  .product-title {
+    font-size: 1.25rem;
+  }
+
+  .product-meta {
+    gap: 0.5rem;
+  }
+
+  .product-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+} 
