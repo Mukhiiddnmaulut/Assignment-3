@@ -6,22 +6,89 @@ document.addEventListener('DOMContentLoaded', function() {
     const orderSummary = document.querySelector('.order-summary');
     const cartToggle = document.querySelector('.cart-toggle');
     const cartCount = document.querySelector('.cart-count');
+    const searchInput = document.querySelector('.search-bar input');
+    const searchResults = document.querySelector('.search-results');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    // Search functionality
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        
+        // Clear previous results
+        searchResults.innerHTML = '';
+        
+        if (searchTerm.length === 0) {
+            searchResults.classList.remove('active');
+            return;
+        }
+
+        // Find matching items
+        const matches = Array.from(menuItems).filter(item => {
+            const itemName = item.querySelector('h3').textContent.toLowerCase();
+            const itemDescription = item.querySelector('p').textContent.toLowerCase();
+            return itemName.includes(searchTerm) || itemDescription.includes(searchTerm);
+        });
+
+        // Show results
+        if (matches.length > 0) {
+            matches.forEach(item => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                
+                const name = item.querySelector('h3').textContent;
+                const price = item.querySelector('.price').textContent;
+
+                resultItem.innerHTML = `
+                    <div class="item-name">${name}</div>
+                    <div class="item-price">${price}</div>
+                `;
+
+                // Add click handler to scroll to item
+                resultItem.addEventListener('click', () => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight the item briefly
+                    item.style.transition = 'background-color 0.3s ease';
+                    item.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        item.style.backgroundColor = '';
+                    }, 2000);
+                    // Clear search
+                    searchInput.value = '';
+                    searchResults.classList.remove('active');
+                });
+
+                searchResults.appendChild(resultItem);
+            });
+            searchResults.classList.add('active');
+        } else {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.remove('active');
+        }
+    });
 
     // Toggle cart panel
-    cartToggle.addEventListener('click', function() {
+    cartToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         orderSummary.classList.toggle('active');
     });
 
     // Close cart panel when clicking outside
     document.addEventListener('click', function(e) {
-        if (!orderSummary.contains(e.target)) {
+        if (!orderSummary.contains(e.target) && !cartToggle.contains(e.target)) {
             orderSummary.classList.remove('active');
         }
     });
 
     // Add to cart functionality
     document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
             const name = this.dataset.name;
             const price = parseFloat(this.dataset.price);
             
@@ -44,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Remove item functionality
     orderItems.addEventListener('click', function(e) {
+        e.stopPropagation();
         if (e.target.classList.contains('remove-item')) {
             const index = parseInt(e.target.dataset.index);
             cart.splice(index, 1);
