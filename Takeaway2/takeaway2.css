@@ -1,13 +1,56 @@
 /* Main styles for Takeaway2 */
 
+/* Reset and base styles */
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Main container */
 .takeaway {
   background-color: var(--background-color);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+}
+
+/* Header and Navigation styles */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  padding: var(--spacing-sm) 0;
+  z-index: 1001;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Add spacing below fixed header */
+main {
+  margin-top: calc(46px + var(--spacing-sm) * 2); /* Height of header + padding */
+  width: 100%;
+  padding-bottom: var(--spacing-lg);
 }
 
 /* Base styles */
@@ -16,25 +59,8 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
-}
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.main-header {
-  width: 100%;
-  background-color: var(--primary-color);
-  padding: var(--spacing-sm) 0;
-}
-
-/* Navigation styles */
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--spacing-md);
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
@@ -51,6 +77,8 @@ body {
 .nav-menu {
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -85,17 +113,33 @@ h1 {
 
 .search-bar input {
   flex-grow: 1;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 20px 0 0 20px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: var(--primary-color);
 }
 
 .search-bar button {
-  padding: 0.5rem 1rem;
-  background-color: #2e2e2e;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 0 20px 20px 0;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: #232323;
+}
+
+.search-bar .fa-search {
+  color: white;
+  font-size: 1.1rem;
 }
 
 /* Menu navigation styles */
@@ -161,59 +205,152 @@ h2 {
 
 .item-details {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-h3 {
+.item-details h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.item-details p {
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+  color: var(--text-color-secondary);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
 }
 
 .price {
   font-weight: 600;
-  color: #2e2e2e;
+  color: var(--text-color);
+  font-size: 1.1rem;
 }
 
-.price-alt {
-  font-weight: 400;
-  color: #797979;
-  margin-left: 0.5rem;
+.add-to-cart {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #232323;
+  transform: translateY(-1px);
 }
 
 .spicy-label {
   display: inline-block;
-  background-color: #e0e0e0;
-  color: #000000;
+  background-color: #ff4444;
+  color: white;
   font-size: 0.8rem;
   padding: 0.2rem 0.5rem;
-  border-radius: 10px;
-  margin-left: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  align-self: flex-start;
 }
 
 /* Order summary styles */
 .order-summary {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: var(--background-color);
-  padding: 1rem var(--spacing-md);
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  bottom: 2rem;
+  right: 2rem;
   z-index: 1000;
-  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cart-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cart-toggle:hover {
+  transform: scale(1.05);
+  background-color: #232323;
+}
+
+.cart-toggle i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.order-content {
+  display: none;
+  width: 350px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.order-summary.active .order-content {
+  display: block;
+}
+
+.order-header {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.order-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
 }
 
 .order-items {
   list-style: none;
-  padding: 0;
-  margin-bottom: 1rem;
-  max-height: 100px;
+  padding: 1rem;
+  margin: 0;
+  max-height: 300px;
   overflow-y: auto;
 }
 
 .order-items li {
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
@@ -224,11 +361,44 @@ h3 {
   border-bottom: none;
 }
 
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.remove-item:hover {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+.order-total {
+  padding: 1rem;
+  border-top: 2px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
 .checkout-button {
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin: 0 1rem 1rem;
   padding: 0.75rem;
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: white;
   border: none;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -240,67 +410,32 @@ h3 {
   background-color: #232323;
 }
 
-/* Update main content to add padding at bottom */
+/* Update main content padding */
 main {
-  padding-bottom: calc(160px + var(--spacing-lg)); /* Height of order summary + extra space */
+  padding-bottom: var(--spacing-lg);
 }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+/* Tablet adjustments */
+@media screen and (max-width: 912px) {
+  .order-summary {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .order-content {
+    width: 300px;
+  }
 }
 
-.modal-content {
-  background-color: #f8f8fa;
-  margin: 10% auto;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 600px;
-}
-
-.modal-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.modal-price {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 1rem 0;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
+/* Remove modal styles */
+.modal,
+.modal-content,
+.modal-image,
+.modal-price,
+.modal-actions,
 .add-to-basket,
 .cancel {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-to-basket {
-  background-color: #2e2e2e;
-  color: #ffffff;
-}
-
-.cancel {
-  background-color: #e0e0e0;
-  color: #2e2e2e;
+  display: none;
 }
 
 /* All the specific class styles from the provided CSS */
@@ -333,17 +468,6 @@ main {
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
-  }
-
-  .order-summary {
-    position: static;
-    transform: none;
-    margin-top: 2rem;
-  }
-
-  .modal-content {
-    margin: 5% auto;
-    padding: 1rem;
   }
 }
 
@@ -712,233 +836,12 @@ main {
   height: 32px;
 }
 
-/* Tablet Portrait Mode (912x1368) */
-@media screen and (max-width: 912px) {
-  /* Base container adjustments */
-  .takeaway {
-    width: 100%;
-    max-width: 912px;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
-  .content {
-    width: 100%;
-    padding: 0;
-    position: relative;
-  }
-
-  /* Add consistent side padding container */
-  .content > * {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  /* Header and navigation adjustments */
-  .main-header {
-    width: 100%;
-    padding: 0.5rem 0;
-    background-color: var(--primary-color);
-  }
-
-  .nav-bar {
-    padding: 0 1.5rem;
-    justify-content: space-between;
-    gap: 1rem;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .logo {
-    flex-shrink: 0;
-  }
-
-  .logo-transparent,
-  .mascot-trans {
-    height: 32px;
-  }
-
-  .nav-menu {
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .nav-link {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  /* Search section adjustments */
-  .page-header {
-    padding: 1rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: var(--background-alt);
-  }
-
-  .search-bar {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Menu navigation adjustments */
-  .menu-nav {
-    width: 100%;
-    padding: 0.5rem 1.5rem;
-    overflow-x: hidden;
-    background-color: var(--background-alt);
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  .menu-tabs {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0;
-    gap: 0.5rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    margin: 0;
-  }
-
-  .menu-tabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .menu-tab {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    white-space: nowrap;
-  }
-
-  /* Menu section adjustments */
-  .menu-section {
-    padding: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: var(--background-color);
-  }
-
-  .menu-items {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0;
-    width: 100%;
-  }
-
-  .menu-item {
-    width: 100%;
-    margin: 0;
-    background-color: var(--background-color);
-    border-radius: var(--border-radius-md);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .menu-item img {
-    height: 140px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-  }
-
-  .item-details {
-    padding: 1rem;
-  }
-
-  /* Order summary adjustments */
-  .order-summary {
-    padding: 1rem var(--spacing-md);
-  }
-
-  .order-items {
-    max-height: 80px;
-  }
-
-  /* Update main content padding for tablet */
-  main {
-    padding-bottom: calc(140px + var(--spacing-md));
-  }
-
-  /* Modal adjustments */
-  .modal-content {
-    width: calc(100% - 3rem);
-    max-width: 600px;
-    margin: 5% auto;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    border-radius: var(--border-radius-lg);
-  }
-
-  .modal-image {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius-md);
-  }
-
-  /* Container adjustments */
-  .takeaway .container,
-  .takeaway .container-2,
-  .takeaway .container-3,
-  .takeaway .container-4,
-  .takeaway .container-5,
-  .takeaway .container-6 {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    box-sizing: border-box;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  /* Form adjustments */
-  .takeaway .form {
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-  }
-
-  .takeaway .input {
-    width: 100%;
-    height: 40px;
-    padding: 0 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-  }
-
-  /* Fix for any remaining horizontal scroll issues */
-  .takeaway * {
-    max-width: 100%;
-  }
-
-  /* Ensure all flex containers don't cause overflow */
-  .takeaway [class^="container"] {
-    flex-wrap: wrap;
-  }
-
-  .add-to-cart {
-    padding: 0.4rem 0.75rem;
-    font-size: var(--font-size-xs);
-  }
-
-  .order-total {
-    padding: 0.75rem 0;
-    font-size: var(--font-size-base);
-  }
-} 
-
 /* Price row styles */
 .price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: auto;
 }
 
 /* Add to cart button styles */
