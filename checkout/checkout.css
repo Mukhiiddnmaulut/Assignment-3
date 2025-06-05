@@ -1,0 +1,1021 @@
+/* Combined and updated styles for checkout page */
+
+/* Imported styles from GLOBALS.CSS */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
+/* Variables from STYLEGUIDE.CSS - Merged and potentially modified */
+:root {
+  --san-felix50: rgba(240, 253, 241, 1);
+  --san-felix100: rgba(219, 253, 223, 1);
+  --san-felix200: rgba(185, 249, 193, 1);
+  --san-felix300: rgba(131, 242, 145, 1);
+  --san-felix400: rgba(70, 226, 90, 1);
+  --san-felix500: rgba(30, 201, 53, 1);
+  --san-felix600: rgba(18, 167, 38, 1);
+  --san-felix700: rgba(18, 131, 33, 1);
+  --san-felix800: rgba(20, 103, 32, 1);
+  --san-felix900: rgba(18, 85, 29, 1);
+  --san-felix950: rgba(4, 47, 12, 1);
+  /* Prioritizing Poppins from provided styles */
+  --font-primary: 'Poppins', Helvetica, Arial, sans-serif;
+
+  /* Reusing existing color variables if they exist, or defining from provided */
+  --primary-color: #1b8a3c; /* Used green from provided button */
+  --background-color: #fafbfc; /* Light background from existing/provided */
+  --text-color: #1b1b1b; /* Dark text from provided */
+  --text-light: #f8f8fa; /* Light text (e.g., for back link) */
+}
+
+/* Base styles - Combined */
+body {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  color: var(--text-color);
+  background: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header and Navigation styles - Combined and prioritized */
+.nav-bar {
+  background: #2e2e2e; /* Dark header background from provided */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem; /* Adjusted padding */
+  position: relative; /* Changed from fixed */
+  width: 100%;
+  box-shadow: 0px 4px 22.8px 4px rgba(0, 0, 0, 0.4); /* From provided */
+  z-index: 10;
+}
+
+.back-link {
+  color: var(--text-light); /* Using light text variable */
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.the-LOGO {
+  display: flex; /* Ensure flex for potential logo + mascot, though mascot removed */
+  align-items: center;
+}
+
+.the-LOGO img {
+  height: 48px; /* Adjusted height */
+  width: auto;
+}
+
+/* Main container styles - Combined */
+.checkout-main {
+  display: flex;
+  gap: 2rem;
+  max-width: 1100px; /* Slightly wider than existing */
+  margin: 2rem auto;
+  padding: 0 1rem; /* Keep padding */
+}
+
+.body-wrapper {
+  width: 100%;
+}
+
+.body {
+  position: relative;
+  width: 100%;
+  max-width: 1048px; /* From provided */
+  margin: 0 auto; /* Center the body */
+}
+
+.overlap {
+  position: relative;
+  width: 100%;
+  /* height will be determined by content */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8px 16px 0px; /* Added horizontal padding from provided */
+}
+
+.overlap-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 31.3px; /* From provided */
+}
+
+.overlap-group {
+  position: relative;
+  width: 100%;
+}
+
+.overlap-2 {
+  position: relative; /* Changed from absolute */
+  width: 100%;
+  display: flex; /* Use flex for layout */
+  gap: 2rem; /* Gap between left and right sections */
+}
+
+.checkout-section { /* This corresponds to container-5 in provided */
+  flex: 2; /* Takes up 2/3 of space */
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Spacing between sections */
+}
+
+.container-33 { /* This corresponds to the aside in original HTML */
+  flex: 1; /* Takes up 1/3 of space */
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Spacing between sections */
+}
+
+.heading { /* Combined with checkout-section h1 */
+  margin-top: 0;
+  font-size: 2rem; /* From existing */
+  font-weight: 700; /* From existing */
+  margin-bottom: 2rem; /* Added margin from provided */
+}
+
+.background-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.background { /* Combined with checkout-alert */
+  background-color: #18c856ad; /* From provided */
+  color: #1b1b1b; /* Text color from provided */
+  padding: 1rem; /* From existing */
+  border-radius: 8px; /* From existing */
+  margin-bottom: 2rem; /* Adjusted margin */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container-3 {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.margin {
+    display: inline-flex;
+    height: 24px;
+    padding: 0px 8px 0px 0px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container-4 {
+    display: inline-flex;
+    height: 24px;
+    align-items: center;
+}
+
+.please-note-your {
+  font-size: 13.1px; /* From provided */
+  line-height: 24px; /* From provided */
+  white-space: nowrap; /* From provided */
+}
+
+.container-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px; /* Spacing */
+  width: 100%;
+}
+
+.header { /* Combined with checkout-form h2 and order-summary h2 */
+  font-size: 1.2rem; /* From existing */
+  font-weight: 700; /* From existing */
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 0.5rem; /* Keep some margin */
+  text-transform: uppercase; /* From provided */
+  letter-spacing: 0.5px; /* From provided */
+}
+
+.container-8 { /* Express checkout buttons */
+  display: flex;
+  gap: 1rem; /* From existing */
+  margin-bottom: 0; /* Removed extra margin */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.button-square-pay,
+.button-google-pay {
+  flex: 1; /* Allow buttons to grow */
+  height: 48px; /* From provided */
+  border: none;
+  border-radius: 8px; /* From provided */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8px 16.8px; /* Adjusted padding */
+}
+
+.button-square-pay {
+  background-color: #000000; /* From provided */
+}
+
+.button-google-pay {
+  background-color: #eaeaea; /* From provided */
+  border: 1px solid #000000; /* From provided */
+}
+
+.button-square-pay img, .button-google-pay img {
+    height: 26px; /* Adjusted height */
+    width: auto;
+}
+
+.horizontal-divider { /* Combined with existing hr styles */
+  border: none;
+  border-top: 1px solid #d3d3d3; /* From provided */
+  margin: 2rem 0; /* From provided */
+  width: 100%;
+}
+
+.container-10 {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Spacing */
+  width: 100%;
+}
+
+/* Form Styles - Combined and prioritized */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Spacing from provided */
+  width: 100%;
+}
+
+.form-group { /* Used for individual form fields not in a row */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0; /* Managed by gap in container-11 */
+}
+
+.container-12 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px; /* Spacing */
+    width: 100%;
+}
+
+.container-13 {
+    display: flex;
+    flex-direction: column;
+    width: 200px; /* Specific width from provided */
+    align-items: flex-start;
+}
+
+.container-14 {
+    display: flex;
+    flex-direction: column;
+    min-width: 80px; /* From provided */
+    width: 100%;
+    border-radius: 8px;
+}
+
+.options-country, .options-country-2 {
+    display: flex;
+    height: 48px; /* From provided */
+    align-items: center;
+    padding: 0.8px 32.8px 0.8px 16.8px; /* From provided */
+    width: 100%;
+    background-color: #ffffff; /* From provided */
+    border-radius: 8px; /* From provided */
+    border: 1px solid #d3d3d3; /* From provided */
+    appearance: none; /* Hide default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.SVG-3, .SVG-5 {
+    position: absolute;
+    right: 16px; /* Position dropdown arrow */
+    font-size: 0.8rem;
+    color: #1b1b1b;
+}
+
+.background-border-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow */
+}
+
+.background-border {
+    display: flex;
+    height: 48px; /* From provided */
+    align-items: center;
+    padding: 0.8px 24.8px 0.8px 16.8px; /* From provided */
+    width: 100%;
+    background-color: #ffffff; /* From provided */
+    border-radius: 8px; /* From provided */
+    border: 1px solid #d3d3d3; /* From provided */
+    overflow: hidden;
+}
+
+.input-wrapper {
+    display: flex;
+    height: 48px; /* From provided */
+    align-items: center;
+    padding: 0.8px 16.8px; /* From provided */
+    width: 100%;
+    background-color: #ffffff; /* From provided */
+    border-radius: 8px; /* From provided */
+    border: 1px solid #d3d3d3; /* From provided */
+    overflow: hidden;
+}
+
+.container-15, .container-16, .container-23, .container-26, .container-28, .input-6 {
+  position: relative;
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: var(--font-primary); /* Use primary font */
+  font-weight: 400;
+  color: #707070; /* Placeholder color from provided */
+  font-size: 1rem; /* Adjusted size */
+  line-height: normal;
+  padding: 0;
+  outline: none;
+}
+
+.container-9 {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow */
+}
+
+.heading-2 { /* Combined with form h2 */
+  font-size: 1.2rem; /* From existing */
+  font-weight: 700; /* From existing */
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 0.5rem; /* Keep some margin */
+}
+
+.overlay-border { /* Credit card section */
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Spacing */
+  padding: 22.8px; /* From provided */
+  width: 100%;
+  border-radius: 8px; /* From provided */
+  border: 1px solid #1b1b1b; /* From provided */
+  box-shadow: inset 0px 0px 0px 2px #1b1b1b; /* From provided */
+}
+
+.label {
+  display: flex;
+  align-items: center; /* Center align items */
+  justify-content: space-between; /* Space between text and icon */
+  width: 100%;
+}
+
+.text-wrapper-6 {
+  font-size: 13px; /* From provided */
+  font-weight: 500; /* From provided */
+  line-height: 24px; /* From provided */
+}
+
+.SVG-4 {
+    font-size: 1.5rem; /* Adjusted icon size */
+}
+
+.container-19 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container-20 {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width */
+    padding: 0px 0px 38.8px; /* From provided */
+}
+
+.iframe-wrapper {
+    display: flex;
+    height: 48px; /* From provided */
+    width: 100%;
+    background-color: #f1f1f1; /* From provided */
+    border-radius: 8px; /* From provided */
+}
+
+.iframe {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.html {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 48px;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #ffffff; /* From provided */
+}
+
+.div-wrapper-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    height: 48px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-21 {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow */
+}
+
+.container-22 {
+    display: flex;
+    flex-direction: column;
+    height: 48px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.input-2 {
+    display: flex;
+    align-items: center; /* Center align */
+    padding: 14.4px 12px 14.4px 68px; /* From provided */
+    width: 100%;
+}
+
+.overlap-group-wrapper {
+    position: absolute;
+    width: 36px;
+    height: 48px;
+    top: 0;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlap-group-2 {
+    position: relative;
+    height: 24px;
+    width: 36px; /* From provided */
+    background-image: url('../assets/credit-card-icon.svg'); /* Using asset path */
+    background-size: cover;
+    background-position: center;
+}
+
+.container-24 {
+    display: flex;
+    flex: 1; /* Allow to grow */
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 28px 0px 0px; /* From provided */
+}
+
+.container-25, .container-27 {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow */
+    height: 48px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.input-3, .input-4 {
+    display: flex;
+    align-items: center; /* Center align */
+    padding: 14.4px 12px; /* Adjusted padding */
+    width: 100%;
+    overflow: hidden;
+}
+
+.label-wrapper { /* Afterpay section */
+  display: flex;
+  flex-direction: column;
+  padding: 22.79px; /* From provided */
+  width: 100%;
+  border: 1px solid #d3d3d3; /* From provided */
+  border-radius: 8px; /* From provided */
+}
+
+.label-2 {
+  display: flex;
+  align-items: center; /* Center align */
+  justify-content: space-between; /* Space between text and icon */
+  width: 100%;
+}
+
+.container-29 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.01px;
+}
+
+.text-wrapper-11 {
+  font-size: 13px; /* From provided */
+  font-weight: 400; /* From provided */
+  line-height: 24px; /* From provided */
+}
+
+.text-wrapper-12 {
+  font-size: 12.8px; /* From provided */
+  font-weight: 400; /* From provided */
+  line-height: 24px; /* From provided */
+}
+
+.img-2 {
+  height: 24px; /* From provided */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.container-31 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing */
+  width: 100%;
+}
+
+.label-3 {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Spacing between checkbox and text */
+  width: 100%;
+}
+
+.input-5 {
+  position: relative;
+  width: 20px; /* From provided */
+  height: 20px; /* From provided */
+  background-color: #ffffff; /* From provided */
+  border-radius: 4px; /* From provided */
+  border: 1px solid #d3d3d3; /* From provided */
+  cursor: pointer;
+}
+
+.i-want-this-business {
+  font-size: 10.6875px; /* From provided */
+  line-height: 18px; /* From provided */
+  color: #707070; /* From provided */
+}
+
+.details-slot-summary {
+  width: 100%;
+}
+
+.container-34, .container-37 {
+    position: relative;
+    width: 100%;
+    height: 24px; /* Adjusted height */
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Spacing */
+}
+
+.SVG-8, .SVG-9 {
+    font-size: 1.2rem; /* Adjusted icon size */
+    color: #707070; /* Icon color from provided */
+}
+
+.container-36, .container-38 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.noodles-more, .text-wrapper-14, .text-wrapper-15 {
+  font-size: 13px; /* Adjusted font size */
+  font-weight: 400; /* Adjusted font weight */
+  color: #707070; /* Color from provided */
+  line-height: 24px; /* From provided */
+  margin-top: 0;
+}
+
+.text-wrapper-16 { /* Instructions header */
+  font-size: 13.5px; /* From provided */
+  font-weight: 500; /* From provided */
+  color: #707070; /* Color from provided */
+  line-height: 22px; /* From provided */
+  margin-top: 1.5rem; /* Added space */
+  margin-bottom: 0.5rem;
+}
+
+.please-head-into-2 {
+  font-size: 12.7px; /* From provided */
+  font-weight: 400; /* From provided */
+  color: #707070; /* Color from provided */
+  line-height: 22px; /* From provided */
+}
+
+.header-2 { /* Order Summary header */
+  font-size: 1.3rem; /* From existing */
+  font-weight: 700; /* From existing */
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 0.5rem; /* Keep some margin */
+}
+
+.order-items { /* Combined with provided styles */
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0; /* From existing */
+  max-height: 220px; /* From existing */
+  overflow-y: auto; /* From existing */
+}
+
+.order-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0; /* From existing */
+  border-bottom: 1px solid #f0f0f0; /* From existing */
+  font-size: 1rem; /* From existing */
+  color: #000000; /* Text color from provided */
+}
+
+.order-items li:last-child {
+  border-bottom: none;
+}
+
+.container-47 { /* Coupon/Gift card input */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.background-border-2 { /* Coupon/Gift card input border */
+  padding: 0.8px 16.8px; /* From provided */
+  display: flex;
+  height: 48px; /* From provided */
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff; /* From provided */
+  border-radius: 8px; /* From provided */
+  border: 1px solid #d3d3d3; /* From provided */
+  overflow: hidden;
+}
+
+.background-border-2 .fas {
+    margin-right: 8px; /* Space between icon and input */
+    color: #707070; /* Icon color */
+}
+
+.container-39 { /* Total amount row and place order button container */
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Spacing */
+    width: 100%;
+}
+
+.order-total { /* Total amount row */
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700; /* From existing */
+  font-size: 1.1rem; /* From existing */
+  margin-top: 1.5rem; /* From existing */
+  padding-top: 1rem; /* From existing */
+  border-top: 2px solid #e0e0e0; /* From existing */
+  /* Styles from provided for specific spans */
+}
+
+.text-wrapper-17, .text-wrapper-18, .text-wrapper-19, .text-wrapper-20, .text-wrapper-21 {
+    /* Adjusting font styles based on provided */
+    font-family: var(--font-primary);
+    line-height: 22px; /* From provided */
+}
+
+.text-wrapper-17, .text-wrapper-18, .text-wrapper-19 {
+     font-weight: 400; /* From provided */
+     font-size: 14px; /* From provided */
+}
+
+.text-wrapper-20, .text-wrapper-21 {
+     font-weight: 700; /* From existing */
+     font-size: 1.1rem; /* From existing */
+}
+
+.text-wrapper-17 {
+    flex: 1;
+}
+
+.text-wrapper-18, .text-wrapper-19, .text-wrapper-21 {
+    text-align: right;
+}
+
+.button.place-order-btn { /* Place order button - Combined and prioritized */
+  width: 100%;
+  background: var(--primary-color); /* Using primary color variable */
+  color: white; /* From existing */
+  border: none;
+  border-radius: 100px; /* From provided */
+  padding: 1rem 2rem; /* Adjusted padding */
+  font-size: 1rem; /* Adjusted size */
+  font-weight: 700; /* From existing */
+  margin-top: 1.5rem; /* From existing */
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex; /* Ensure flex for content inside */
+  justify-content: space-between; /* Space between text and total */
+  align-items: center;
+}
+
+.button.place-order-btn:hover {
+  background: #388e3c; /* Darker green on hover from existing */
+}
+
+.text-wrapper-23 {
+    font-weight: 400; /* From provided */
+    font-size: 12.8px; /* From provided */
+    line-height: 15.4px; /* From provided */
+}
+
+.text-wrapper-24 {
+    font-weight: 700; /* From existing */
+    font-size: 1.1rem; /* From existing */
+    line-height: 22px; /* From provided */
+    opacity: 1; /* Ensure visibility */
+}
+
+/* Footer styles - Combined */
+.container-51 { /* Matches checkout-footer */
+  text-align: center;
+  color: #888; /* From existing */
+  font-size: 0.95rem; /* From existing */
+  padding: 2rem 0 1rem 0; /* From existing */
+  width: 100%;
+}
+
+.container-52 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 16px; /* From provided */
+    width: 100%;
+}
+
+.SVG-margin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 16px; /* From provided */
+}
+
+.frame {
+    font-size: 1.5rem; /* Adjusted icon size */
+    color: #1b1b1b; /* Icon color */
+}
+
+.text-wrapper-25 {
+  font-size: 14.5px; /* From provided */
+  font-weight: 400; /* From provided */
+  color: #000000; /* Color from provided */
+  line-height: normal;
+}
+
+.container-53 {
+    display: flex;
+    width: 100%;
+    max-width: 1016px; /* From provided */
+    justify-content: center;
+    margin-top: 1rem; /* Added margin */
+}
+
+.container-54 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* From provided */
+}
+
+.background-2 {
+    width: 38px; /* From provided */
+    height: 24px; /* From provided */
+    align-items: center;
+    justify-content: center;
+    background-color: #000000; /* From provided */
+    border-radius: 3px; /* From provided */
+    display: flex;
+}
+
+.SVG-10 {
+    font-size: 1rem; /* Adjusted icon size */
+    color: white; /* Icon color */
+}
+
+.div-wrapper-3 {
+    display: flex;
+    flex-direction: column;
+    height: 24px;
+}
+
+.img-wrapper-2 {
+    display: flex;
+    flex-direction: column;
+    width: 34px; /* From provided */
+    height: 24px; /* From provided */
+    align-items: center;
+    justify-content: center;
+}
+
+.visa-svg-fill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 37.09px; /* From provided */
+    height: 24px; /* From provided */
+}
+
+.visa-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive styles - Combined and prioritized */
+@media (max-width: 900px) {
+  .checkout-main {
+    flex-direction: row; /* Arrange sections next to each other */
+    gap: 2.5rem; /* Keep the gap */
+  }
+  .overlap-2 {
+      flex-direction: row; /* Arrange the two main columns next to each other */
+      gap: 2.5rem; /* Keep the gap */
+  }
+  .checkout-section {
+      flex: 2; /* Ensure the form section takes up more space */
+      width: auto; /* Allow flex to control width */
+      padding: 2.5rem; /* Keep padding */
+      border-radius: 15px; /* Keep radius */
+  }
+  .container-33 { /* The right column (Order Summary/Pickup) */
+      flex: 1; /* Ensure the order summary section takes up less space */
+      width: auto; /* Allow flex to control width */
+      padding: 2.5rem 2rem; /* Keep padding */
+      border-radius: 15px; /* Keep radius */
+      margin-top: 0; /* Ensure no top margin from column stacking */
+      align-self: flex-start; /* Align to the top */
+      min-width: 300px; /* Give it a minimum width */
+      max-width: 350px; /* Give it a maximum width */
+  }
+  .order-summary {
+    max-width: 100%; /* Reset max-width for flex item */
+    min-width: 0;
+    width: 100%; /* Fill parent width */
+    margin-top: 0; /* Ensure no top margin */
+    align-self: stretch; /* Stretch within flex item */
+    padding: 0; /* Remove padding here, applied to container-33 */
+    border-radius: 0; /* Remove radius here */
+  }
+  .container-6 {
+      gap: 32px; /* Keep gap within container-6 */
+  }
+  .container-8 { /* Express checkout buttons container */
+      gap: 1.5rem; /* Keep gap between buttons */
+  }
+  .container-12, .form-row { /* Form rows and containers */
+    flex-direction: column;
+    gap: 1.8rem; /* Keep gap for form elements */
+  }
+  .container-13, .background-border-wrapper, .container-9 {
+      width: 100%; /* Full width for form groups in columns */
+  }
+  .button-square-pay, .button-google-pay {
+      padding: 1.5rem 16.8px; /* Keep vertical padding for buttons */
+  }
+  .label-2 {
+      flex-direction: column; /* Stack label and image */
+      align-items: flex-start;
+      gap: 20px; /* Keep gap */
+  }
+  .order-items {
+      max-height: 120px; /* Keep max height for items */
+      margin: 1.8rem 0; /* Keep margin */
+  }
+  .order-items li {
+      padding: 1.5rem 0; /* Keep padding for list items */
+  }
+  .container-39 { /* Total section */
+      gap: 3rem; /* Keep gap in total section */
+      margin-top: 2rem; /* Keep margin */
+      padding-top: 1.8rem; /* Keep padding */
+      border-top: 1px solid #d3d3d3; /* Keep border */
+  }
+    .order-total {
+      padding-top: 0; /* Remove top padding if border is on container-39 */
+      margin-top: 0; /* Remove top margin */
+  }
+  .text-wrapper-20, .text-wrapper-21 {
+      font-size: 1.4rem; /* Keep font size for total */
+  }
+  .background-border-2 { /* Coupon input */
+      padding: 1.5rem; /* Keep padding for coupon input */
+  }
+  .button.place-order-btn {
+      padding: 1.5rem 2.5rem; /* Keep padding for place order button */
+      font-size: 1.3rem; /* Keep font size */
+      margin-top: 3rem; /* Keep top margin */
+  }
+  .container-34, .container-37 {
+      gap: 28px; /* Keep gap in pickup details */
+  }
+  .text-wrapper-16 {
+      margin-top: 3rem; /* Keep top margin for instructions header */
+      margin-bottom: 1.2rem; /* Keep bottom margin */
+  }
+  .please-head-into-2 {
+      margin-bottom: 3.2rem; /* Keep bottom margin to instructions */
+  }
+   .checkout-alert {
+       padding: 1.5rem; /* Keep padding for alert */
+       margin-bottom: 2.5rem; /* Keep margin */
+   }
+   .checkout-form h2, .order-summary h2, .container-6 h2 {
+       margin-bottom: 1rem; /* Keep bottom margin for headers */
+   }
+   .container-10 {
+       gap: 40px; /* Keep gap within container-10 */
+   }
+   .container-52 {
+       padding: 70px 16px; /* Keep footer padding */
+   }
+    .form-group input, .container-15, .container-16, .container-23, .container-26, .container-28, .input-6, .options-country, .options-country-2, .background-border, .input-wrapper, .background-border-2 {
+        height: 52px; /* Keep input/select height */
+        padding: 1rem; /* Keep padding for inputs */
+    }
+    .options-country, .options-country-2 {
+         padding: 1rem 32.8px 1rem 1rem; /* Keep padding for selects with arrow space */
+    }
+    .SVG-3, .SVG-5 {
+        right: 10px; /* Keep arrow position */
+    }
+    .overlay-border {
+        padding: 2rem; /* Keep padding for credit card section */
+    }
+    .label {
+        margin-bottom: 1rem; /* Keep margin below label */
+    }
+}
+
+@media (max-width: 600px) {
+  .nav-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+  }
+  .checkout-section, .order-summary {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .heading {
+    font-size: 1.3rem;
+  }
+  .header, .heading-2 {
+    font-size: 1rem;
+  }
+  .container-12, .form-row {
+      gap: 0.5rem;
+  }
+  .button-square-pay, .button-google-pay {
+      padding: 0.8px 16.8px; /* Keep padding */
+  }
+  .label-2 {
+      flex-direction: column; /* Stack label and image */
+      align-items: flex-start;
+      gap: 8px;
+  }
+} 
