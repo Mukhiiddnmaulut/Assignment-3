@@ -1417,4 +1417,50 @@ nav a {
 /* Override shadow for mobile order button */
 .mobile-order {
   box-shadow: none;
+}
+
+/* Styles for menu.html content container */
+.menu-container {
+  padding-top: 60px; /* Add space for desktop nav bar */
+  /* Keep existing styles and potentially adjust height */
+  width: 100%;
+  min-height: 100vh; /* Use min-height instead of height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px; /* Keep existing horizontal padding */
+  padding-right: 20px; /* Keep existing horizontal padding */
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .menu-container {
+    padding-top: 55px; /* Adjust space for mobile nav bar (40px nav + 15px extra space) */
+  }
+}
+
+@media screen and (width: 912px) and (height: 1368px) {
+  .menu-container {
+    padding-top: 60px; /* Ensure padding for Surface Pro */
+    padding-left: 40px; /* Adjust padding from inline style */
+    padding-right: 40px; /* Adjust padding from inline style */
+  }
+}
+
+@media screen and (width: 390px) and (height: 844px) {
+  .menu-container {
+    padding-top: 50px; /* Adjust padding for iPhone */
+    padding-left: 0; /* Adjust padding from inline style */
+    padding-right: 0; /* Adjust padding from inline style */
+  }
+}
+
+/* Styles for menu image */
+.menu-image {
+  max-width: 100%;
+  max-height: calc(100% - 60px);
+  object-fit: contain;
+  display: block;
 } 
