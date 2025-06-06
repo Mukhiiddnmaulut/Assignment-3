@@ -10,6 +10,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.querySelector('.search-results');
     const menuItems = document.querySelectorAll('.menu-item');
     const orderContent = document.querySelector('.order-content');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    // Hamburger menu functionality
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+        document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target) && mobileNav.classList.contains('open')) {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile nav when clicking a link
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
 
     // Create product view container
     const productView = document.createElement('div');
@@ -430,30 +458,4 @@ document.addEventListener('DOMContentLoaded', function() {
         cart = JSON.parse(savedCart);
         updateCartDisplay();
     }
-
-    // Mobile navigation
-    const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileNavLinks = mobileNav.querySelectorAll('a');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('open');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('open');
-        }
-    });
-
-    // Close mobile menu when clicking a link
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('open');
-        });
-    });
 }); 
