@@ -4,306 +4,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="utf-8" />
   <title>Checkout - Noodles & More</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="checkout.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <header class="nav-bar">
+  <!-- Header Section -->
+  <header class="header">
     <a href="../Takeaway2/takeaway2.html" class="back-link">Back to Menu</a>
-    <div class="the-LOGO">
-      <img class="logo-transparent" src="../assets/logo.png" alt="Noodles & More logo" />
-      <!-- Removed mascot image as it wasn't in original Noodles & More design -->
+    <div class="logo">
+      <img src="../assets/logo.png" alt="Noodles & More logo" />
     </div>
   </header>
-  <main class="checkout-main">
-    <div class="body-wrapper">
-      <div class="body">
-        <div class="overlap">
-          <div class="container">
-            <h1 class="heading">Checkout</h1>
-            <div class="overlap-wrapper">
-              <div class="overlap-group">
-                <div class="overlap-2">
-                  <section class="background-wrapper">
-                    <div class="background">
-                      <div class="container-3">
-                        <div class="margin">
-                          <div class="container-4">
-                            <i class="fas fa-info-circle"></i>
-                          </div>
-                        </div>
-                        <p class="please-note-your">
-                          <span>Please note, your order will be ready on: </span>
-                          <strong class="pickup-time">Today at 5:20 PM.</strong>
-                        </p>
-                      </div>
-                    </div>
-                  </section>
-                  <section class="container-5">
-                    <div class="container-6">
-                      <h2 class="header">EXPRESS CHECKOUT</h2>
-                      <div class="container-8">
-                        <button class="button-square-pay">
-                          <img class="img" src="../assets/square-pay.svg" alt="Square Pay" />
-                        </button>
-                        <button class="button-google-pay">
-                          <img class="SVG-2" src="../assets/google-pay.svg" alt="Google Pay" />
-                        </button>
-                      </div>
-                    </div>
-                    <hr class="horizontal-divider" />
-                    <div class="container-10">
-                      <div class="container-6">
-                        <h2 class="header">CONTACT</h2>
-                        <form class="checkout-form">
-                          <div class="container-12">
-                            <div class="container-13">
-                              <div class="container-14">
-                                <select class="options-country" aria-label="Country code">
-                                  <option>+61 Australia</option>
-                                </select>
-                                <i class="fas fa-chevron-down SVG-3"></i>
-                              </div>
-                            </div>
-                            <div class="background-border-wrapper">
-                              <div class="background-border">
-                                <input class="container-15" placeholder="Phone number" type="tel" name="phone" required />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="input-wrapper">
-                            <input
-                              class="container-16"
-                              placeholder="Email address for receipt"
-                              type="email"
-                              name="email"
-                              required
-                            />
-                          </div>
-                          <div class="container-12">
-                            <div class="container-9">
-                              <div class="input-wrapper">
-                                <input class="container-16" placeholder="First name" type="text" name="first-name" required />
-                              </div>
-                            </div>
-                            <div class="container-9">
-                              <div class="input-wrapper">
-                                <input class="container-15" placeholder="Last name" type="text" name="last-name" required />
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <hr class="horizontal-divider" />
-                      <div class="container-6">
-                        <h2 class="header">PAYMENT</h2>
-                        <p class="heading-2">All transactions are secure and encrypted</p>
-                        <div class="container-11">
-                          <div class="overlay-border">
-                            <div class="label">
-                              <span class="text-wrapper-6">Credit Card</span>
-                              <i class="far fa-credit-card SVG-4"></i>
-                            </div>
-                            <div class="container-11">
-                              <div class="container-14">
-                                <select class="options-country-2" aria-label="Select country">
-                                  <option>Australia</option>
-                                </select>
-                                <i class="fas fa-chevron-down SVG-5"></i>
-                              </div>
-                              <div class="container-19">
-                                <div class="container-20">
-                                  <div class="iframe-wrapper">
-                                    <div class="iframe">
-                                      <div class="html">
-                                        <div class="div-wrapper-2">
-                                          <div class="form">
-                                            <div class="container-21">
-                                              <div class="container-22">
-                                                <div class="input-2">
-                                                  <input
-                                                    class="container-23"
-                                                    placeholder="Card number"
-                                                    type="text"
-                                                    name="card-number"
-                                                    required
-                                                  />
-                                                </div>
-                                              </div>
-                                              <div class="overlap-group-wrapper">
-                                                <div class="overlap-group-2">
-                                                  <!-- Credit card icon here -->
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="container-24">
-                                              <div class="container-25">
-                                                <div class="input-3">
-                                                  <input
-                                                    class="container-26"
-                                                    placeholder="MM/YY"
-                                                    type="text"
-                                                    name="expiry"
-                                                    required
-                                                  />
-                                                </div>
-                                              </div>
-                                              <div class="container-27">
-                                                <div class="input-4">
-                                                  <input
-                                                    class="container-28"
-                                                    placeholder="CVV"
-                                                    type="text"
-                                                    name="cvv"
-                                                    required
-                                                  />
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="label-wrapper">
-                            <div class="label-2">
-                              <div class="container-29">
-                                <span class="text-wrapper-11">Afterpay</span>
-                                <p class="text-wrapper-12">4 interest-free instalments of $2.75</p>
-                              </div>
-                              <img class="img-2" src="../assets/afterpay.svg" alt="Afterpay logo" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <hr class="horizontal-divider" />
-                      <div class="container-6">
-                        <h2 class="header">STAY IN TOUCH</h2>
-                        <div class="container-31">
-                          <label class="label-3">
-                            <input type="checkbox" class="input-5" />
-                            <span class="i-want-this-business">
-                              I want this business to use the data I provided to send me marketing communications
-                              until I unsubscribe.
-                            </span>
-                          </label>
-                          <details class="details-slot-summary">
-                            <summary>Learn more</summary>
-                            <p>Additional information about marketing communications would go here.</p>
-                          </details>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+
+  <main class="checkout-container">
+    <div class="checkout-content">
+      <!-- Left Column: Checkout Form -->
+      <section class="checkout-form-section">
+        <h1 class="page-title">Checkout</h1>
+        
+        <!-- Pickup Time Alert -->
+        <div class="alert-box">
+          <div class="alert-content">
+            <i class="fas fa-info-circle"></i>
+            <p class="alert-text">
+              <span>Please note, your order will be ready on: </span>
+              <strong class="pickup-time">Today at 5:20 PM.</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Express Checkout -->
+        <section class="checkout-section">
+          <h2 class="section-title">EXPRESS CHECKOUT</h2>
+          <div class="payment-buttons">
+            <button class="payment-button square-pay">
+              <img src="../assets/squarepaylogo.PNG" alt="Square Pay" />
+            </button>
+            <button class="payment-button google-pay">
+              <img src="../assets/googlepaylogo.png" alt="Google Pay" />
+            </button>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Contact Information -->
+        <section class="checkout-section">
+          <h2 class="section-title">CONTACT</h2>
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group phone-prefix">
+                <select class="form-select" aria-label="Country code">
+                  <option>+61 Australia</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="form-group phone-number">
+                <input class="form-input" placeholder="Phone number" type="tel" name="phone" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input class="form-input" placeholder="Email address for receipt" type="email" name="email" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <input class="form-input" placeholder="First name" type="text" name="first-name" required />
+              </div>
+              <div class="form-group">
+                <input class="form-input" placeholder="Last name" type="text" name="last-name" required />
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Payment Information -->
+        <section class="checkout-section">
+          <h2 class="section-title">PAYMENT</h2>
+          <p class="payment-note">All transactions are secure and encrypted</p>
+          
+          <div class="payment-methods">
+            <!-- Credit Card Section -->
+            <div class="payment-method credit-card">
+              <div class="payment-method-header">
+                <span class="payment-method-title">Credit Card</span>
+                <i class="far fa-credit-card"></i>
+              </div>
+              
+              <div class="card-form">
+                <div class="form-group">
+                  <select class="form-select" aria-label="Select country">
+                    <option>Australia</option>
+                  </select>
+                  <i class="fas fa-chevron-down"></i>
                 </div>
-                <aside class="container-33">
-                  <div class="container-31">
-                    <div class="container-10">
-                      <div class="container-6">
-                        <h2 class="header">PICKUP AT</h2>
-                        <div class="container-6">
-                          <div class="container-34">
-                            <i class="fas fa-map-marker-alt SVG-8"></i>
-                            <div class="container-36">
-                              <h3 class="noodles-more">Noodles & More</h3>
-                              <p class="text-wrapper-14">Shop 5, Amberly Park Shopping Centre</p>
-                            </div>
-                          </div>
-                          <div class="container-37">
-                              <i class="fas fa-clock SVG-9"></i>
-                            <div class="container-38">
-                                <p class="text-wrapper-15 pickup-time">Today at 5:20 PM</p>
-                            </div>
-                          </div>
-                          <h4 class="text-wrapper-16">Instructions</h4>
-                          <p class="please-head-into-2">
-                            Please head into Noodles & More and see one of our lovely bar staff to pickup your order.
-                            Thanks for ordering with us!
-                          </p>
-                        </div>
-                      </div>
-                      <hr class="horizontal-divider" />
-                      <h2 class="header-2">ORDER SUMMARY</h2>
-                      <!-- Removed button-toggle-order as it's not needed with the current layout -->
+
+                <div class="card-details">
+                  <div class="form-group card-number">
+                    <input class="form-input" placeholder="Card number" type="text" name="card-number" required />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group expiry-date">
+                      <input class="form-input" placeholder="MM/YY" type="text" name="expiry" required />
                     </div>
-                    <hr class="horizontal-divider" />
-                    <div class="container-10">
-                      <div class="container-10">
-                        <ul class="order-items">
-                          <!-- Items will be dynamically inserted here -->
-                        </ul>
-                        <div class="container-47">
-                          <div class="background-border-2">
-                            <i class="fas fa-gift SVG"></i>
-                            <input class="input-6" placeholder="Add coupon or gift card" type="text" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container-39">
-                        <strong class="text-wrapper-20">Order total</strong>
-                        <strong class="text-wrapper-21 total-amount">$0.00</strong>
-                      </div>
-                      <button class="button place-order-btn">
-                        <span class="text-wrapper-23">Place order</span>
-                        <span class="text-wrapper-24 total-amount">$0.00</span>
-                      </button>
+                    <div class="form-group cvv">
+                      <input class="form-input" placeholder="CVV" type="text" name="cvv" required />
                     </div>
                   </div>
-                </aside>
+                </div>
+              </div>
+            </div>
+
+            <!-- Afterpay Section -->
+            <div class="payment-method afterpay">
+              <div class="afterpay-content">
+                <div class="afterpay-info">
+                  <span class="afterpay-title">Afterpay</span>
+                  <p class="afterpay-installments">4 interest-free instalments of $2.75</p>
+                </div>
+                <i class="fas fa-dollar-sign afterpay-icon"></i>
               </div>
             </div>
           </div>
-          <footer class="container-51">
-            <div class="container-52">
-              <div class="SVG-margin">
-                  <i class="fas fa-lock frame"></i>
-              </div>
-              <p class="text-wrapper-25">Secure checkout by Square</p>
-              <div class="container-53">
-                <div class="container-54">
-                  <div class="background-2">
-                    <i class="fab fa-square SVG-10"></i>
-                  </div>
-                  <div class="div-wrapper-3">
-                    <div class="img-wrapper-2">
-                      <img class="img-2" src="../assets/applepay-svgrepo-com.svg" alt="Apple Pay" />
-                    </div>
-                  </div>
-                  <div class="div-wrapper-3">
-                      <div class="img-wrapper-2">
-                          <img class="img-2" src="../assets/googlepay-svgrepo-com.svg" alt="Google Pay" />
-                      </div>
-                  </div>
-                  <div class="visa-svg-fill">
-                    <img class="visa-svg" src="../assets/visa-svgrepo-com.svg" alt="Visa" />
-                  </div>
-                  <div class="div-wrapper-3">
-                      <div class="img-wrapper-2">
-                        <img class="img-2" src="../assets/mastercard-svgrepo-com.svg" alt="Mastercard" />
-                      </div>
-                  </div>
-                  <div class="div-wrapper-3">
-                      <div class="img-wrapper-2">
-                        <img class="img-2" src="../assets/american-express-svgrepo-com.svg" alt="American Express" />
-                      </div>
-                  </div>
-                  <div class="div-wrapper-3">
-                      <div class="img-wrapper-2">
-                          <img class="img-2" src="../assets/jcb-svgrepo-com.svg" alt="JCB" />
-                      </div>
-                  </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Marketing Preferences -->
+        <section class="checkout-section">
+          <h2 class="section-title">STAY IN TOUCH</h2>
+          <div class="marketing-preferences">
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox-input" />
+              <span class="checkbox-text">
+                I want this business to use the data I provided to send me marketing communications
+                until I unsubscribe.
+              </span>
+            </label>
+            <details class="marketing-details">
+              <summary>Learn more</summary>
+              <p>Additional information about marketing communications would go here.</p>
+            </details>
+          </div>
+        </section>
+      </section>
+
+      <!-- Right Column: Order Summary -->
+      <aside class="order-summary">
+        <div class="summary-content">
+          <!-- Pickup Information -->
+          <section class="summary-section">
+            <h2 class="section-title">PICKUP AT</h2>
+            <div class="pickup-details">
+              <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="location-info">
+                  <h3 class="store-name">Noodles & More</h3>
+                  <p class="store-address">Shop 5, Amberly Park Shopping Centre</p>
                 </div>
               </div>
+              <div class="pickup-time">
+                <i class="fas fa-clock"></i>
+                <p class="time">Today at 5:20 PM</p>
+              </div>
+              <h4 class="instructions-title">Instructions</h4>
+              <p class="instructions-text">
+                Please head into Noodles & More and see one of our lovely bar staff to pickup your order.
+                Thanks for ordering with us!
+              </p>
             </div>
-          </footer>
+          </section>
+
+          <hr class="section-divider" />
+
+          <!-- Order Items -->
+          <section class="summary-section">
+            <h2 class="section-title">ORDER SUMMARY</h2>
+            <ul class="order-items">
+              <!-- Items will be dynamically inserted here -->
+            </ul>
+
+            <!-- Coupon Input -->
+            <div class="coupon-section">
+              <div class="coupon-input">
+                <i class="fas fa-gift"></i>
+                <input type="text" placeholder="Add coupon or gift card" />
+              </div>
+            </div>
+
+            <!-- Order Total -->
+            <div class="order-total">
+              <strong>Order total</strong>
+              <strong class="total-amount">$0.00</strong>
+            </div>
+
+            <!-- Place Order Button -->
+            <button class="place-order-button" onclick="window.location.href='../confirmation/index.html'">
+              <span>Place order</span>
+            </button>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="checkout-footer">
+    <div class="footer-content">
+      <div class="security-info">
+        <i class="fas fa-lock"></i>
+        <p>Secure checkout by Square</p>
+      </div>
+      
+      <div class="payment-methods-footer">
+        <div class="payment-method-icon">
+          <img src="../assets/bottomsquarepaylogo.PNG" alt="Square" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottomapplepaylogo.PNG" alt="Apple Pay" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottomgooglepaylogo.PNG" alt="Google Pay" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottomvisalogo.PNG" alt="Visa" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottommastercardlogo.PNG" alt="Mastercard" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottomamexlogo.PNG" alt="American Express" />
+        </div>
+        <div class="payment-method-icon">
+          <img src="../assets/bottomjcblogo.PNG" alt="JCB" />
         </div>
       </div>
     </div>
-  </main>
+  </footer>
+
   <script src="checkout.js"></script>
 </body>
 </html> 
