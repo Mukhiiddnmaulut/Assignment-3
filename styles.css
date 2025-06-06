@@ -266,6 +266,21 @@ body {
   .mobile-logo-btn {
     z-index: 901;
   }
+
+  .offerings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .offerings-grid {
+    order: 2;
+  }
+  
+  .mobile-order {
+    order: 1;
+    margin-bottom: 1.5rem;
+  }
 }
 
 /* Hero Section */
@@ -556,20 +571,22 @@ nav a {
   .offering-item img {
     width: 35px !important;
     height: 35px !important;
+    margin-top: 1em !important;
     margin-bottom: 0.5rem !important;
     display: block !important;
   }
 
   .offering-item p {
     font-size: 0.65rem !important;
-    margin: 0 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
     text-align: center !important;
     width: 100% !important;
     overflow: visible !important;
     white-space: normal !important;
     line-height: 1.2 !important;
     word-break: break-word !important;
-    color: #393636 !important;
+    color: #FFEDD6 !important;
   }
 }
 
@@ -1062,10 +1079,6 @@ nav a {
   }
 
   .order-btn {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
   }
@@ -1075,28 +1088,28 @@ nav a {
   }
 
   .mobile-order {
-    display: inline-flex;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    display: inline-flex;  /* Show on mobile */
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
     background-color: #fff;
     color: #2E8B57;
     border: 3px solid #2E8B57;
     font-weight: 700;
-    transform-origin: center;
+    transform: scale(1.05); /* Keep the scale effect */
   }
 
   .mobile-order:hover,
   .mobile-order:active,
   .mobile-order:focus {
-    transform: translateX(-50%) scale(1.05);
+    transform: scale(1.05); /* Keep the scale effect */
   }
 
   .hero .order-btn {
-    display: none;
+    display: none;  /* Hide hero section button on mobile */
+  }
+
+  .menu-btn {
+    display: none;  /* Hide menu button on mobile */
   }
 
   .footer {
@@ -1199,12 +1212,152 @@ nav a {
 @media (max-width: 768px) {
   .mobile-order {
     display: inline-flex;  /* Show on mobile */
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.7rem 1.8rem;
-    font-size: 1rem;
+  }
+
+  .hero .order-btn {
+    display: none;  /* Hide hero section button on mobile */
+  }
+
+  .menu-btn {
+    display: none;  /* Hide menu button on mobile */
+  }
+
+  .offerings {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+  }
+
+  .offerings-grid {
+    order: 2; /* Ensure grid comes after the button */
+  }
+
+  .mobile-order {
+    display: inline-flex;  /* Show on mobile */
+    order: 1; /* Ensure button comes before the grid */
+    margin-bottom: 1.5rem; /* Add some space below the button */
+    /* Remove absolute positioning */
+    position: static;
+    bottom: auto;
+    left: auto;
+    transform: none;
+  }
+
+  /* Keep the scale effect on hover/active/focus */
+  .mobile-order:hover,
+  .mobile-order:active,
+  .mobile-order:focus {
+    transform: scale(1.05);
+  }
+
+  .hero .order-btn {
+    display: none;  /* Hide hero section button on mobile */
+  }
+
+  .menu-btn {
+    display: none;  /* Hide menu button on mobile */
+  }
+
+  .footer {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 0.85rem !important;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .contact-box {
+    margin: 2rem 1.5rem 0;
+    padding: 1.5rem;
+    width: auto;
+    max-width: none;
+    text-align: left;
+  }
+
+  .contact-box p {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  .contact-box p svg {
+    margin-right: 1rem;
+    flex-shrink: 0;
+    min-width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container,
+  .find-us {
+    padding: 0 1rem;
+  }
+
+  .about-text {
+    padding: 1rem;
+  }
+
+  .about-text p,
+  .location-info p {
+    font-size: 0.8rem !important;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+  }
+
+  .about-text h2,
+  .location-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    padding: 0 1rem;
+  }
+
+  .footer p {
+    font-size: 0.8rem !important;
+    padding: 0 1.5rem;
+  }
+
+  .contact-box {
+    margin: 2rem 1rem 0;
+    padding: 1.2rem;
+  }
+
+  .contact-box p {
+    font-size: 0.8rem;
+    margin: 0.8rem 0;
+  }
+
+  .about-text h2 {
+    font-size: 1rem !important;
+    margin-bottom: 1.1rem;
+  }
+}
+
+/* Hide mobile order button by default (desktop) */
+.mobile-order {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-order {
+    display: inline-flex;  /* Show on mobile */
   }
 
   .hero .order-btn {
